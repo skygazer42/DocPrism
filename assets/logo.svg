@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">PDF VLM Accelerator Logo</title>
+  <desc id="desc">A document page with a vision grid, GPU chip, and acceleration lines.</desc>
+  <rect width="512" height="512" rx="96" fill="#f7fbff"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M111 338h-46M134 384H82M149 430h-36" stroke="#f0a31a" stroke-width="18"/>
+    <rect x="166" y="108" width="226" height="286" rx="24" fill="#ffffff" stroke="#10243f" stroke-width="18"/>
+    <path d="M334 108v70h58" fill="#dff7f3" stroke="#10243f" stroke-width="18"/>
+    <rect x="196" y="244" width="88" height="88" rx="18" fill="#13b8a6" stroke="#10243f" stroke-width="14"/>
+    <path d="M214 244v88M240 244v88M266 244v88M196 270h88M196 296h88" stroke="#e9fffb" stroke-width="8"/>
+    <path d="M308 256c22-24 58-24 80 0-22 27-58 27-80 0Z" fill="#eaf6ff" stroke="#10243f" stroke-width="14"/>
+    <circle cx="348" cy="256" r="17" fill="#f0a31a" stroke="#10243f" stroke-width="10"/>
+    <path d="M204 184h86M204 214h134M204 362h132" stroke="#52667d" stroke-width="14"/>
+    <rect x="120" y="172" width="72" height="72" rx="16" fill="#10243f" stroke="#10243f" stroke-width="12"/>
+    <path d="M96 190h24M96 210h24M96 230h24M192 190h24M192 210h24M192 230h24M138 148v24M158 148v24M178 148v24M138 244v24M158 244v24M178 244v24" stroke="#13b8a6" stroke-width="8"/>
+    <path d="M135 198h42M135 218h42" stroke="#ffffff" stroke-width="8"/>
+    <path d="M390 292h50M398 330h35M377 368h62" stroke="#13b8a6" stroke-width="16"/>
+  </g>
+</svg>
