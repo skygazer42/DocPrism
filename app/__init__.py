@@ -1,1 +1,1 @@
-"""MinerU VLM Lab application package."""
+"""VisionPilot application package."""

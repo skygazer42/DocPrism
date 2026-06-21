@@ -1,10 +1,10 @@
-# PDF VLM Accelerator
+# VisionPilot
 
 <p align="center">
-  <img src="assets/logo.png" width="180" alt="PDF VLM Accelerator logo">
+  <img src="assets/logo.png" width="180" alt="VisionPilot logo">
 </p>
 
-PDF VLM Accelerator 是一个独立的 PDF 文档解析实验与部署项目。它不依赖 DocPilot，也不把 MinerU pipeline 当作主链路；核心目标是把可编辑 PDF、扫描页、图片页、复杂表格拆开路由，让 VLM 只处理真正需要视觉理解的部分。
+VisionPilot 是一个独立的 PDF 文档解析实验与部署项目。它不依赖 DocPilot，也不把 MinerU pipeline 当作主链路；核心目标是把可编辑 PDF、扫描页、图片页、复杂表格拆开路由，让 VLM 只处理真正需要视觉理解的部分。
 
 当前项目用于验证：
 

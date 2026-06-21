@@ -83,7 +83,7 @@ async def run(args: argparse.Namespace) -> int:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Benchmark MinerU VLM Lab async jobs.")
+    parser = argparse.ArgumentParser(description="Benchmark VisionPilot async jobs.")
     parser.add_argument("--base-url", default="http://127.0.0.1:18180")
     parser.add_argument("--pdf", required=True)
     parser.add_argument("--jobs", type=int, default=1)
