@@ -1,0 +1,43 @@
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local environments and caches
+.cache/
+.conda/
+.config/
+.modelscope/
+.nv/
+.triton/
+pip-cache/
+
+# Runtime state
+logs/
+output/
+tmp/
+work/
+exports/
+storage/
+__sync_tmp__/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Local env files
+production.env
+embedding.env
+.env
+.env.*
+
+# Downloaded or generated documents/models
+samples/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# Keep benchmark metadata, not generated markdown/assets.
+!reports/
+!reports/*.jsonl
