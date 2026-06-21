@@ -1,1 +1,1 @@
-"""VisionPilot application package."""
+"""PageLens application package."""

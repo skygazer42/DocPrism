@@ -76,7 +76,7 @@ async def run_job(
         store.mark_failed(job_id, str(exc))
 
 
-app = FastAPI(title="VisionPilot", version="0.2.0")
+app = FastAPI(title="PageLens", version="0.2.0")
 
 
 @app.on_event("startup")
