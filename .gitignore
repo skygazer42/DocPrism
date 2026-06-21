@@ -37,6 +37,9 @@ samples/
 *.png
 *.jpg
 *.jpeg
+!assets/
+!assets/logo.png
+!assets/logo.svg
 
 # Keep benchmark metadata, not generated markdown/assets.
 !reports/
