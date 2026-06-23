@@ -2,61 +2,50 @@
   <img src="assets/docprism-brand.png" width="460" alt="DocPrism 品牌图">
 </p>
 
-面向 Markdown 输出的选择性 PDF 解析服务
+<p align="center">
+  <strong>让 VLM 只处理真正困难的页面</strong>
+</p>
 
-DocPrism 是一个自部署 PDF 解析服务：可编辑页面优先走 `PyMuPDF` 快路径，扫描页、图片页、复杂表格和低置信区域再进入异步 VLM 队列。目标不是把整篇 PDF 全量丢给 VLM，而是在延迟、成本和输出质量之间做更稳的工程取舍。
+<p align="center">
+  面向 Markdown 输出的选择性 PDF 解析服务
+</p>
 
-## 为什么做
+<p align="center">
+  可编辑页走 <code>PyMuPDF</code> 快路径，扫描页、复杂表格和低置信区域再进入异步 VLM 队列。
+</p>
 
-- 可编辑 PDF 不该默认走 OCR / VLM。
-- 多 GPU 更适合加速复杂页和增强队列，不适合浪费在所有正文页上。
-- 最终输出不只是文本，还要保留 Markdown、图片资产和块级结果。
+<p align="center">
+  <strong>ATLAS 64 页：</strong> 2.172s 主解析返回 · 29.46 页/s · VLM 只处理少量复杂内容
+</p>
 
-## 核心能力
+> 这不是“把整篇 PDF 丢给 VLM”的方案。DocPrism 的重点是先路由，再增强，只把真正难的部分交给 VLM。
 
-- `PyMuPDF` 快路径处理可编辑正文。
-- 页级路由，把扫描页和低置信页送入 VLM。
-- 块级增强，专门处理复杂表格和图像区域。
-- FastAPI 接口，支持同步解析和异步任务。
-- SQLite 持久化 `jobs / blocks / embeddings / enhancement_tasks`。
-- Markdown 导出，附带 `assets/` 图片资源。
+## 一眼看懂
+
+- **更快**：大多数可编辑 PDF 不走 OCR，不走全量 VLM。
+- **更省**：多 GPU 只服务复杂页和增强任务，不浪费在普通正文页上。
+- **更实用**：输出不只有文本，还包括 Markdown、图片 assets、块级结果和异步任务状态。
+
+## 核心亮点
+
+- **选择性 VLM 路由**：可编辑页走 `PyMuPDF`，扫描页和低置信页才进入 VLM。
+- **页级 + 块级增强**：整页处理扫描页，局部 crop 处理复杂表格和图像区域。
+- **直接可集成**：提供 FastAPI 接口、SQLite 持久化和 Markdown 导出脚本。
+- **有实测结果**：当前仓库已提交 benchmark，64 页可编辑论文主解析可到 `29.46 页/s`。
 
 ## 快速开始
 
-安装依赖：
+30 秒试一下：
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pip install -r requirements-dev.txt
-```
-
-启动本地服务：
-
-```bash
 export MINERU_VLM_LAB_ROOT="$PWD"
 export MINERU_VLM_LAB_WORK_ROOT="$PWD/work"
 export MINERU_VLM_LAB_DB_PATH="$PWD/storage/docprism.sqlite3"
 export MINERU_VLM_BASE_URL="http://127.0.0.1:18100"
 export EMBEDDING_PROVIDER="hash"
 export EMBEDDING_DIM="32"
-
 python -m uvicorn app.main:app --host 0.0.0.0 --port 18180
-```
-
-健康检查：
-
-```bash
-curl -s http://127.0.0.1:18180/health
-curl -s http://127.0.0.1:18180/api/v1/stats
-```
-
-说明：仓库里的脚本和环境变量前缀仍沿用历史命名 `MINERU_VLM_LAB_*`。如果上游 `MINERU_VLM_BASE_URL` 不可用，可编辑 PDF 仍然能正常走快路径。
-
-## 接口
-
-同步解析：
-
-```bash
 curl -X POST http://127.0.0.1:18180/parse \
   -F "file=@/path/to/file.pdf" \
   -F "max_concurrent_vlm_pages=2" \
@@ -64,7 +53,9 @@ curl -X POST http://127.0.0.1:18180/parse \
   -F "run_embedding=false"
 ```
 
-异步解析：
+说明：仓库里的脚本和环境变量前缀仍沿用历史命名 `MINERU_VLM_LAB_*`。如果上游 `MINERU_VLM_BASE_URL` 不可用，可编辑 PDF 仍然能正常走快路径。
+
+## 接口
 
 ```bash
 curl -X POST http://127.0.0.1:18180/api/v1/jobs \
