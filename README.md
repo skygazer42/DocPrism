@@ -1,12 +1,8 @@
-# DocPrism
-
 <p align="center">
-  <img src="assets/docprism-brand.png" width="820" alt="DocPrism 品牌图">
+  <img src="assets/docprism-brand.png" width="460" alt="DocPrism 品牌图">
 </p>
 
-<p align="center">
-  面向 Markdown 输出的选择性 PDF 解析服务
-</p>
+面向 Markdown 输出的选择性 PDF 解析服务
 
 DocPrism 是一个自部署 PDF 解析服务：可编辑页面优先走 `PyMuPDF` 快路径，扫描页、图片页、复杂表格和低置信区域再进入异步 VLM 队列。目标不是把整篇 PDF 全量丢给 VLM，而是在延迟、成本和输出质量之间做更稳的工程取舍。
 

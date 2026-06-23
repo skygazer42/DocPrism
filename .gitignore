@@ -40,6 +40,7 @@ samples/
 !assets/
 !assets/logo.png
 !assets/logo.svg
+!assets/docprism-brand.png
 
 # Keep benchmark metadata, not generated markdown/assets.
 !reports/
