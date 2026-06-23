@@ -1,22 +1,22 @@
 # DocPrism
 
 <p align="center">
-  <img src="ChatGPT Image Jun 23, 2026, 04_39_07 PM.png" width="820" alt="DocPrism brand">
+  <img src="assets/docprism-brand.png" width="820" alt="DocPrism 品牌图">
 </p>
 
 <p align="center">
-  Selective PDF parsing for Markdown-first output.
+  面向 Markdown 输出的选择性 PDF 解析服务
 </p>
 
 DocPrism 是一个自部署 PDF 解析服务：可编辑页面优先走 `PyMuPDF` 快路径，扫描页、图片页、复杂表格和低置信区域再进入异步 VLM 队列。目标不是把整篇 PDF 全量丢给 VLM，而是在延迟、成本和输出质量之间做更稳的工程取舍。
 
-## Why
+## 为什么做
 
 - 可编辑 PDF 不该默认走 OCR / VLM。
 - 多 GPU 更适合加速复杂页和增强队列，不适合浪费在所有正文页上。
 - 最终输出不只是文本，还要保留 Markdown、图片资产和块级结果。
 
-## Features
+## 核心能力
 
 - `PyMuPDF` 快路径处理可编辑正文。
 - 页级路由，把扫描页和低置信页送入 VLM。
@@ -25,7 +25,7 @@ DocPrism 是一个自部署 PDF 解析服务：可编辑页面优先走 `PyMuPDF
 - SQLite 持久化 `jobs / blocks / embeddings / enhancement_tasks`。
 - Markdown 导出，附带 `assets/` 图片资源。
 
-## Quick Start
+## 快速开始
 
 安装依赖：
 
@@ -56,7 +56,7 @@ curl -s http://127.0.0.1:18180/api/v1/stats
 
 说明：仓库里的脚本和环境变量前缀仍沿用历史命名 `MINERU_VLM_LAB_*`。如果上游 `MINERU_VLM_BASE_URL` 不可用，可编辑 PDF 仍然能正常走快路径。
 
-## API
+## 接口
 
 同步解析：
 
@@ -94,7 +94,7 @@ python scripts/export_job_markdown.py <job_id> \
   --wait-enhancements all
 ```
 
-## Deployment
+## 部署
 
 单机多 GPU 部署可直接复用现有模板：
 
@@ -122,7 +122,7 @@ SCAN_OCR_MODE=auto
 FAST_TEXT_CHUNK_CHARS=5000
 ```
 
-## Benchmark
+## 基准结果
 
 已提交结果文件：`reports/paper-bench-20260621.jsonl`
 
@@ -135,7 +135,7 @@ FAST_TEXT_CHUNK_CHARS=5000
 
 结论很简单：大多数可编辑论文的吞吐主要来自 `PyMuPDF` 快路径，多 GPU 的价值主要体现在 VLM 页和增强任务，而不是所有页面一起上 VLM。
 
-## Repo
+## 仓库结构
 
 ```text
 app/        FastAPI 服务、路由、worker、存储、Markdown 导出
@@ -146,7 +146,7 @@ scripts/    启动、下载模型、导出、benchmark
 tests/      单元与端到端测试
 ```
 
-## More
+## 更多说明
 
 - [架构说明](docs/architecture.md)
 - [生产目标与验收要求](docs/production-requirements.md)
